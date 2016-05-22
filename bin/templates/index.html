@@ -36,24 +36,82 @@
 
 <div class="container">
     <!-- Formulario principal -->
-    <div id="search">
+    <form id="search" action="search" method="get">
+      	<div class="row">
+		    <div class="col-xs-7">
+		      <strong>Búsqueda por LIBRO:</strong><br>&nbsp;
+		    </div>
+  		</div>
         <div class="row">
-         	<input type="text" class="form-control" id="url"
-                   placeholder="Please input the url of a book (.txt file)"/>
-            <input type="text" class="form-control" id="title"
-                   placeholder="Please input the name of a book"/>
-            <input type="text" class="form-control" id="author"
-                   placeholder="Please input the name of an author"/>
-            <input type="text" class="form-control" id="character"
-                   placeholder="Please input the name of a character"/>
+        	<div class="col-xs-5">
+        		<div class="input-group">
+		            <input type="text" class="form-control" id="title" name="title" value=""
+		                   placeholder="Inserte LIBRO a buscar"/>
+		            <span class="input-group-btn">
+            			<button type="submit" class="btn btn-default center-block" onclick="search()">Buscar</button>
+	   				</span>
+        		</div>
+        	</div>
+	    </div>
+        <div class="row">&nbsp;</div>
+        
+        <div class="row">
+		    <div class="col-xs-7">
+		      <strong>Búsqueda por AUTOR:</strong><br>&nbsp;
+		    </div>
+  		</div>
+        <div class="row">
+        	<div class="col-xs-5">
+        		<div class="input-group">
+		            <input type="text" class="form-control" id="author" name="author" value=""		                   placeholder="Inserte AUTOR a buscar"/>
+		            <span class="input-group-btn" >
+            			<button type="submit" class="btn btn-default center-block" onclick="search()">Buscar</button>
+	   				</span>
+        		</div>
+        	</div>
+	    </div>
         <div class="row">&nbsp;</div>
         <div class="row">
-            <button type="submit" onclick="search()" class="btn btn-default center-block">Launch!</button>
-        </div>
-    </div>
+		    <div class="col-xs-7">
+		      <strong>Búsqueda por PERSONAJE:</strong><br>&nbsp;
+		    </div>
+  		</div>
+        <div class="row">
+        	<div class="col-xs-5">
+        		<div class="input-group">
+		            <input type="text" class="form-control" id="character" name="character" value=""
+		                   placeholder="Inserte PERSONAJE a buscar"/>
+		            <span class="input-group-btn">
+            			<button type="submit" class="btn btn-default center-block" onclick="search()">Buscar</button>
+	   				</span>
+        		</div>
+        	</div>
+	    </div>
+        <div class="row">&nbsp;</div>
+        <div class="row">
+		    <div class="col-xs-7">
+		      <strong>Búsqueda por URL:</strong><br>&nbsp;
+		    </div>
+  		</div>
+        <div class="row">
+        	<div class="col-xs-5">
+        		<div class="input-group">
+		            <input type="text" class="form-control" id="url" name="url" value=""
+		                   placeholder="Inserte URL del libro a buscar"/>
+		            <span class="input-group-btn">
+            			<button type="submit" class="btn btn-default center-block" onclick="search()">Buscar</button>
+	   				</span>
+        		</div>
+        	</div>
+	    </div>
+	    <div class="row">&nbsp;</div>
+	    <div class="row">&nbsp;</div>
+	    
+	    <b><span style="color:red;" id="errfn"></span></b>
+        <div class="row">&nbsp;</div>
+    </form>
     <div class="row">&nbsp;</div>
     <div id="resultsBlock"></div>
-</div>
 </div>
 </body>
 </html>

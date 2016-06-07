@@ -33,7 +33,25 @@
         <a title="UNIZAR" href="http://www.unizar.es"></a>
     </div>
 </nav>
-
+<ul class="nav nav-tabs">
+  <li role="presentation" class="dropdown">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" onclick="loadAuthors()" aria-haspopup="true" aria-expanded="false">
+      Autores <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu">
+    </ul>
+  </li>
+  <li role="presentation" class="dropdown">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" onclick="loadBooks()" aria-haspopup="true" aria-expanded="false">
+      Libros <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu">
+    </ul>
+  </li>
+</ul>
+<div class="row">&nbsp;</div>
+<div class="row">&nbsp;</div>
+<div class="row">&nbsp;</div>
 <div class="container">
     <!-- Formulario principal -->
     <div id="search"">
@@ -112,6 +130,8 @@
     </div>
     <div class="row">&nbsp;</div>
     <div id="resultsBlock"></div>
+    <div id="loadingBlock"></div>
+    
 </div>
 </body>
 </html>

@@ -1,3 +1,6 @@
+var urlPaso1 = "";
+var errorCheck = false;
+
 function loadBooks() {
 	var urlCompleta="https://books-analyzer.herokuapp.com/" + "books";
 	console.log(urlCompleta);
@@ -51,29 +54,34 @@ function searchJSON() {
 	//var character= $("#character").val();
 	//var url= $("#url").val();
 	var id = document.cookie;
-	var urlCompleta="https://books-analyzer.herokuapp.com/" + "books/"+id;
-	console.log(urlCompleta);
-  $.ajax({
-	  url: urlCompleta,
-	    headers: {"Access-Control-Allow-Origin" : "*"},
-	    dataType: 'json',
-	    cache: 'false',
-	    type: 'GET',
-	    success: function(json){
-	    	console.log("hola");
-	    	var status = json.status;
-	    	console.log(status);
-	    	if (status == null){
-	    	$.get(window.location.href + '/loadingTemplate.html', function(template) {
-	   			$("#loadingBlock").empty().append(Mustache.to_html(template, json));
-	    	});
-	      }
-	    },
-	    complete: function() {
-	      // schedule the next request *only* when the current one is complete:
-	      setTimeout(searchJSON, 5000);
-	    }
-  });
+	if (errorCheck == false){
+		var urlCompleta=urlPaso1;
+		console.log(urlCompleta);
+		$.ajax({
+	  		url: urlCompleta,
+		    headers: {"Access-Control-Allow-Origin" : "*"},
+		    dataType: 'json',
+		    cache: 'false',
+		    type: 'GET',
+		    success: function(json){
+		    	console.log("hola");
+		    	var status = json.status;
+		    	console.log(status);
+		    	if (status == null){
+		    	$.get(window.location.href + '/loadingTemplate.html', function(template) {
+		   			$("#loadingBlock").empty().append(Mustache.to_html(template, json));
+		    	});
+		      }
+		    },
+		    complete: function() {
+		      // schedule the next request *only* when the current one is complete:
+		      setTimeout(searchJSON, 5000);
+		    }
+  		});
+	}
+	else{
+		setTimeout(searchJSON, 5000);
+	}
 }
 
 
@@ -92,13 +100,18 @@ function search() {
 	    cache: 'false',
 	    type: 'GET',
 	    success: function(json){
-		    var id = json.id;
-		    document.cookie = "id=900";
+		    urlPaso1 = json.url;
+		    if (typeof(urlPaso1) == 'undefined' || urlPaso1 == "") {
+		    	  errorCheck = true;
+		    	}
+		    console.log(urlPaso1);
+		    urlPaso1="www.prueba.com";
 		    //document.cookie = "id="+id;
 	    }
 	});
+	if (errorCheck == false){
 	//2.- Función periódica
 	setTimeout(searchJSON, 5000);
-	
+	}
 	
 }

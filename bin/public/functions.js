@@ -106,10 +106,10 @@ function search() {
 		    	  errorCheck = true;
 		    	  console.log(urlPaso1);
 		    	}
-		    console.log(urlPaso1);
 		    if (errorCheck == false){
 		    	//2.- Función periódica
 		    	setTimeout(searchJSON, 5000);
+		    	console.log(urlPaso1);
 		    	}
 		    //urlPaso1="www.prueba.com";
 		    //document.cookie = "id="+id;

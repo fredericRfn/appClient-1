@@ -49,11 +49,6 @@ function loadAuthors() {
 	});
 }
 function searchJSON() {
-	//var title= $("#title").val(); 
-	//var author= $("#author").val();
-	//var character= $("#character").val();
-	//var url= $("#url").val();
-	var id = document.cookie;
 	if (errorCheck == false){
 		var urlCompleta=urlPaso1;
 		console.log(urlCompleta);
@@ -96,22 +91,30 @@ function search() {
 	$.ajax({
 	    url: urlCompleta,
 	    headers: {"Access-Control-Allow-Origin" : "*"},
-	    dataType: 'json',
+	    dataType: 'text',
 	    cache: 'false',
 	    type: 'GET',
-	    success: function(json){
+	    success: function(text){ //cambiar por json cuando fred arregle comilla
+	    	//console.log("hola");
+	    	//obj = JSON.parse(json);
+	    	//alert(obj.count);
+	    	var cosa = "\{\"url\":\"https:\/\/books-analyzer-ws.herokuapp.com/books/-1707338975\"\}";
+	    	//borrar linea de arriba cuando fred arregle comilla
+	    	json = JSON.parse(cosa);//quitar esto
 		    urlPaso1 = json.url;
 		    if (typeof(urlPaso1) == 'undefined' || urlPaso1 == "") {
 		    	  errorCheck = true;
+		    	  console.log(urlPaso1);
 		    	}
 		    console.log(urlPaso1);
-		    urlPaso1="www.prueba.com";
+		    if (errorCheck == false){
+		    	//2.- Función periódica
+		    	setTimeout(searchJSON, 5000);
+		    	}
+		    //urlPaso1="www.prueba.com";
 		    //document.cookie = "id="+id;
 	    }
 	});
-	if (errorCheck == false){
-	//2.- Función periódica
-	setTimeout(searchJSON, 5000);
-	}
+	
 	
 }
